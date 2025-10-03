@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Website</title>
+  </head>
+  <body>
+    <button onclick="func()" id="counter">Count: 0</button>
+  </body>
+  <script>
+    const func = () => {
+      const count = document.getElementById("counter").innerHTML.split(" ")[1];
+    //   console.log(count);
+      const newCount = parseInt(count) + 1;
+      document.getElementById("counter").innerHTML = "Count: " + newCount;
+    };
+  </script>
+</html>

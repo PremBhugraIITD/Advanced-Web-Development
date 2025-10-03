@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo Application</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Title" id="title" />
+    <br />
+    <br />
+    <input type="text" placeholder="Description" id="description" />
+    <br />
+    <br />
+    <button onclick="addToDo()">Add Todo</button>
+    <br />
+    <br />
+    <div class="container">
+      <h2>ToDos List:</h2>
+    </div>
+  </body>
+  <script>
+    const addToDo = () => {
+      const title = document.getElementById("title").value;
+      console.log("Title:", title);
+      const description = document.getElementById("description").value;
+      console.log("Description:", description);
+      const originalHTML =
+        document.getElementsByClassName("container")[0].innerHTML;
+      document.getElementsByClassName("container")[0].innerHTML =
+        originalHTML +
+        `<div>
+            <h3>${title}:</h3>
+            <p>${description}</p>
+            <button onclick="change(this)">Mark As Done</button>
+        </div>`;
+      document.getElementById("title").value = "";
+      document.getElementById("description").value = "";
+    };
+    const change = (button) => {
+      button.innerText = "Completed";
+      button.disabled = true;
+    };
+  </script>
+</html>

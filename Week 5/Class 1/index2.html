@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Website</title>
+  </head>
+  <body>
+    <div id="btn"></div>
+  </body>
+  <script>
+    let state = {
+      count: 0,
+    };
+
+    const buttonClick = () => {
+      state.count++;
+      buttonRender();
+    };
+
+    const buttonRender = () => {
+      const div = document.getElementById("btn");
+      div.innerHTML = "";
+      const newComponent = buttonComponent(state.count);
+      div.appendChild(newComponent);
+    };
+    const buttonComponent = (count) => {
+      const newElement = document.createElement("button");
+      newElement.innerHTML = "Count: " + count;
+      newElement.setAttribute("onclick", "buttonClick()");
+      return newElement;
+    };
+    buttonRender();
+  </script>
+</html>

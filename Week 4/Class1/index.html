@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Website</title>
+  </head>
+  <body>
+    <h1>This is a website to calculate sum:</h1>
+    <input type="text" placeholder="Enter the value for a" />
+    <br />
+    <br />
+    <input type="text" placeholder="Enter the value for b" />
+    <br />
+    <br />
+    <button onclick="calculateSum()">Calculate</button>
+    <br />
+    <br />
+    <h2></h2>
+  </body>
+  <script>
+    const calculateSum = async () => {
+      const a =
+        document.querySelector('input[placeholder="Enter the value for a"]')
+          .value || 0;
+      const b =
+        document.querySelector('input[placeholder="Enter the value for b"]')
+          .value || 0;
+      //   const sum = parseFloat(a) + parseFloat(b);
+      //   document.querySelector("h2").innerHTML = "Result: " + sum;
+
+      //If the logic for calculating sum is not written in the frontend then we need to hit the API for calculating sum in the backend.
+    //   fetch(`http://localhost:3000?a=${a}&b=${b}`) //Returns a promise
+    //     .then((response) => {
+    //       return response.text(); //Returns a promise
+    //     })
+    //     .then((data) => {
+    //       console.log(data);
+    //       document.querySelector("h2").innerHTML = "Result: " + data;
+    //     });
+
+      //or
+
+        const response = await fetch(`http://localhost:3000?a=${a}&b=${b}`);
+        const data = await response.text();
+        console.log(data);
+        document.querySelector("h2").innerHTML = "Result: " + data;
+    };
+  </script>
+</html>

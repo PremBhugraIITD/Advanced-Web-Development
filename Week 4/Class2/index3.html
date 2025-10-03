@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo Application</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>ToDos List:</h2>
+    </div>
+  </body>
+  <script>
+    let globalId = 0;
+
+    const change = (id) => {
+      const target = document.getElementById(`${id}`).children[2];
+      target.setAttribute("disabled", true);
+      target.innerText = "Completed";
+    };
+
+    const createChild = (title, description, id) => {
+      const child = document.createElement("div");
+      const one = document.createElement("h3");
+      one.innerText = title + ":";
+      const two = document.createElement("p");
+      two.innerText = description;
+      const three = document.createElement("button");
+      three.innerText = "Mark As Done";
+      three.setAttribute("onclick", `change(${id})`);
+      child.appendChild(one);
+      child.appendChild(two);
+      child.appendChild(three);
+      child.setAttribute("id", id);
+      return child;
+    };
+
+    let state = [
+      {
+        id: 1,
+        title: "Go to Gym",
+        description: "Go to Gym from 7-9 PM",
+      },
+      {
+        id: 2,
+        title: "Read a Book",
+        description: "Read 'The Hitchhiker's Guide to the Galaxy'",
+      },
+      {
+        id: 3,
+        // title: "Buy Groceries",
+        description: "",
+      },
+    ];
+
+    const updateState = (state) => {
+      document.getElementsByClassName("container")[0].innerHTML = "";
+      for (let i = 0; i < state.length; i++) {
+        document
+          .getElementsByClassName("container")[0]
+          .appendChild(
+            createChild(
+              state[i].title ? state[i].title : "",
+              state[i].description ? state[i].description : "",
+              state[i].id
+            )
+          );
+      }
+    };
+
+    updateState(state);
+  </script>
+</html>

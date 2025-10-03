@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Website</title>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <p>This is a website to test debouncing</p>
+    <input
+      oninput="debounceCalctulateSum()"
+      type="text"
+      placeholder="Enter the value for a"
+    />
+    <br />
+    <br />
+    <input
+      oninput="debounceCalctulateSum()"
+      type="text"
+      placeholder="Enter the value for b"
+    />
+    <h2></h2>
+  </body>
+  <script>
+    let timeOut;
+    const debounceCalctulateSum = () => {
+      clearTimeout(timeOut); //For the first call for debounceCalctulateSum, timeOut will be undefined and so clearTimeout will do nothing but the clock of setTimout will begin. Now, if the next call is sent after 1 second then till that time, the previous clocked had stopped ticking, so clearTimeout will again do nothing since there is no active clock to stop but setTimeout will start a new clock of the current request. But, if the next call is sent before 1 second, i.e., before the clock is stopped, the clearTimeout will stop the running clock and then startTimeout will begin a new one.
+      timeOut = setTimeout(() => {
+        calculateSum();
+      }, 1000);
+    };
+    const calculateSum = async () => {
+      const a =
+        document.querySelector('input[placeholder="Enter the value for a"]')
+          .value || 0;
+      const b =
+        document.querySelector('input[placeholder="Enter the value for b"]')
+          .value || 0;
+      const response = await fetch(`http://localhost:3000?a=${a}&b=${b}`);
+      const data = await response.text();
+      console.log(data);
+      document.querySelector("h2").innerHTML = "Result: " + data;
+    };
+  </script>
+</html>

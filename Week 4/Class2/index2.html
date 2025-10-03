@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo Application</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Title" id="title" />
+    <br />
+    <br />
+    <input type="text" placeholder="Description" id="description" />
+    <br />
+    <br />
+    <button onclick="addToDo()">Add Todo</button>
+    <br />
+    <br />
+    <div class="container">
+      <h2>ToDos List:</h2>
+    </div>
+  </body>
+  <script>
+    let globalId = 0;
+
+    const change = (id) => {
+      const target = document.getElementById(`${id}`).children[2];
+      target.setAttribute("disabled", true);
+      target.innerText = "Completed";
+    };
+
+    const addToDo = () => {
+      const title = document.getElementById("title").value;
+      console.log("Title:", title);
+      const description = document.getElementById("description").value;
+      console.log("Description:", description);
+      document
+        .getElementsByClassName("container")[0]
+        .appendChild(createChild(title, description, globalId++));
+      document.getElementById("title").value = "";
+      document.getElementById("description").value = "";
+    };
+
+    const createChild = (title, description, id) => {
+      const child = document.createElement("div");
+      const one = document.createElement("h3");
+      one.innerText = title + ":";
+      const two = document.createElement("p");
+      two.innerText = description;
+      const three = document.createElement("button");
+      three.innerText = "Mark As Done";
+      three.setAttribute("onclick", `change(${id})`);
+      child.appendChild(one);
+      child.appendChild(two);
+      child.appendChild(three);
+      child.setAttribute("id", id);
+      return child;
+    };
+  </script>
+</html>

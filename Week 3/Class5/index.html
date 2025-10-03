@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      window.onload = () => {
+        const heading = document.createElement("h1");
+        const headingText = document.createTextNode("Big Head");
+        heading.appendChild(headingText);
+        document.body.appendChild(heading);
+      };
+    </script>
+  </head>
+  <body>
+    <form id="one" action="/action">
+      First Name: <input type="text" class="first" value="1234" /><br />
+      Middle Name: <input type="text" class="first" /><br />
+      Last Name: <input type="text" class="second" name="lname" />
+    </form>
+    <a name="first" href="https://www.google.com">Google</a>
+    <a href="https://www.youtube.com">Yahoo</a>
+    <p>Hello</p>
+    <div id="example">
+      <h2>Prem</h2>
+    </div>
+    <button onclick="change_h2()">Click Me</button>
+  </body>
+  <script>
+    let x = document.getElementById("one").elements.length; //Gives the list of elements in the form
+    console.log(x);
+    console.log(document.getElementById("one").elements);
+    console.log(document.getElementsByClassName("first"));
+    console.log(document.querySelectorAll("input.first,#one")); //Put css selectors as arguments to get a list of elements
+    console.log(document.querySelectorAll(".first"));
+    document.querySelectorAll(".second")[0].style.backgroundColor = "red";
+    console.log(document.querySelector("form>.first"));
+    console.log(document.getElementsByName("lname"));
+    console.log(document.anchors.length); //Considers only those anchor elements for which name atttribute is not empty
+    document.getElementsByTagName("p")[0].innerHTML = "Hello World";
+    let a = document.getElementById("example").getElementsByTagName("h2");
+    let b = document.querySelectorAll("#example h2");
+    console.log(a.length, b.length);
+    const change_h2 = () => {
+      document
+        .getElementById("example")
+        .appendChild(document.createElement("h2"));
+      console.log(a.length, b.length);
+    };
+    console.log(document.getElementById("example").classList);
+    document.getElementById("example").setAttribute("class", "ex1");
+    console.log(document.getElementById("example").classList);
+    document.getElementById("example").classList.add("ex2");
+    console.log(document.getElementById("example").classList);
+    document.getElementById("example").className = "ex3";
+    document.getElementById("example").style.fontSize = "40px";
+    console.log(document.getElementById("example").classList);
+    console.log(document.getElementsByTagName("form")[0].childNodes);
+    console.log(
+      document.getElementsByTagName("form")[0].childNodes[1].nextSibling
+    );
+    console.log(
+      document.getElementsByTagName("form")[0].childNodes[1].previousSibling
+    );
+    console.log(document.getElementsByTagName("form")[0].firstChild);
+    console.log(document.getElementsByTagName("form")[0].lastChild);
+    document.addEventListener("keydown", (event) => {
+      if (event.key >= "0" && event.key <= "9") {
+        alert(event.key + " key pressed");
+      }
+    });
+  </script>
+</html>
