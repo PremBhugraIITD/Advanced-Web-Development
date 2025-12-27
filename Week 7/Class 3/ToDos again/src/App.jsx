@@ -47,11 +47,11 @@ const ToDo = ({ id }) => {
 
 const todoAtomFamily = atomFamily({
   key: "todoAtomFamily",
-  // default: (id) => {
-  //   return todos.find((todo) => {
-  //     return todo.id === id;
-  //   });
-  // },
+  //   default: (id) => {
+  //     return todos.find((todo) => {
+  //       return todo.id === id;
+  //     });
+  //   },
   default: selectorFamily({
     key: "todoSelectorFamily",
     get: (id) => {

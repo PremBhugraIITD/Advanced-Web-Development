@@ -10,7 +10,8 @@ const App = () => {
     <div>
       <h1 style={{ backgroundColor: "black", color: "white" }}>Top Heading</h1>
       <BrowserRouter>
-        <Navbar />
+      {/* Adding Navbar to BrowserRouter for being able to use useNavigate hook */}
+        <Navbar /> 
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route

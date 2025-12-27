@@ -65,7 +65,7 @@ Read about Recoil at [Recoil Docs](https://recoiljs.org/)
 - atom
 - useRecoilState
 - useRecoilValue
-- useSetRecoilStore
+- useSetRecoilState
 - selector
 
 ###### Updating our counter app to use Recoil

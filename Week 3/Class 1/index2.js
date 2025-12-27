@@ -2,7 +2,7 @@ import express from "express";
 import zod from "zod";
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 let requestCount = 0;
 

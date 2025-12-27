@@ -15,7 +15,12 @@ const App = () => {
   const messageCount = useRecoilValue(messageAtom);
   const notificationCount = useRecoilValue(notificationAtom);
   const meCount = useRecoilValue(meSelector);
-
+//   useEffect(() => {
+//     console.log("App mounted");
+//     return () => {
+//       console.log("App unmounted");
+//     };
+//   },[]);
   return (
     <>
       <button>Home</button>

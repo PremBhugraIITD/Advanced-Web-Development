@@ -6,15 +6,13 @@ Visit the Repository to get the code for this week -> [Recoil-Deep-Dive](https:/
 
 ### Things we will cover in this week
 
-- Recoil State Management Deep Dive
-  ~ Basic
+- Recoil State Management Deep Dive (Basic)
 - Atoms
 - Selectors
 - Asynchronous Data Queries
 - useRecoilState
 - useRecoilValue
-- useSetRecoilState
-  ~ Advance
+- useSetRecoilState (Advanced)
 - atomFamily
 - selectorFamily
 - useRecoilStateLoadable
